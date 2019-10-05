@@ -54,7 +54,7 @@ public class StudentController {
     }
 
     /**
-     * 进入学生页面
+     * 进入学生页面(测试)
      */
     @RequestMapping("/index")
     public String index(){
