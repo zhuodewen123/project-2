@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.zhuodewen.domain.Student;
 import com.zhuodewen.facade.StudentFacade;
 import com.zhuodewen.util.JSONResult;
+import com.zhuodewen.util.UploadUtil;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -11,11 +12,13 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -26,6 +29,10 @@ public class StudentController {
 
     @Autowired
     private StudentFacade studentFacade;
+
+    @Value("${uploadpath}")
+    private String uploadpath;
+
 
     /**
      * 根据id查询学生对象
@@ -96,5 +103,18 @@ public class StudentController {
         //4.输出到响应流
         wb.write(response.getOutputStream());
     }
+
+    /**
+     * 文件上传的方法(图片)
+     * @param photo
+     * @return
+     */
+    @RequestMapping("/uploadPhoto")
+    @ResponseBody
+    public  String uploadPhoto(MultipartFile photo){
+        //使用工具类返回一个文件地址
+        return UploadUtil.upload(photo,uploadpath);
+    }
+
 
 }
