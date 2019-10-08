@@ -15,4 +15,6 @@ public interface StudentMapper {
     List<Student> selectAll();
 
     int updateByPrimaryKey(Student record);
+
+    Student selectByName(String name);
 }

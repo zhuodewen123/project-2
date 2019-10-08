@@ -20,4 +20,6 @@ public interface StudentFacade {
     int updateByPrimaryKey(Student record);
 
     PageInfo<Student> query(Student student);
+
+    Student selectByName(String name);
 }

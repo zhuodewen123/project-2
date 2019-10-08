@@ -41,4 +41,8 @@
     select id, name, age, sex, phone, email, address
     from student
   </select>
+    <select id="selectByName" resultType="com.zhuodewen.domain.Student">
+      select id, name, age, sex, phone, email, address ,password
+      from student where name=#{name}
+    </select>
 </mapper>

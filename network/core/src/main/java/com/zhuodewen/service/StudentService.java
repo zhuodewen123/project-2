@@ -47,4 +47,13 @@ public class StudentService implements StudentFacade{
         PageHelper.startPage(1,10);
         return new PageInfo<Student>(studentMapper.selectAll());
     }
+
+    /**
+     * 根据学生名称查找学生个人信息
+     * @param name
+     * @return
+     */
+    public Student selectByName(String name) {
+        return studentMapper.selectByName(name);
+    }
 }

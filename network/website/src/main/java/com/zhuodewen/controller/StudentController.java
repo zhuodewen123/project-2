@@ -11,13 +11,14 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -116,5 +117,29 @@ public class StudentController {
         return UploadUtil.upload(photo,uploadpath);
     }
 
+    /**
+     * Shiro登录认证
+     * @param student student
+     * @return string
+     */
+    //@PostMapping("/login")    为了方便测试,改成GET方式请求
+    @GetMapping("/login")
+    public String login(Student student) {
+        // 根据用户名和密码创建 Token
+        UsernamePasswordToken token = new UsernamePasswordToken(student.getName(), student.getPassword());
+        // 获取 subject 认证主体
+        Subject subject = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        try{
+            // 开始认证，这一步会跳到我们自定义的 Realm 中
+            subject.login(token);
+            session.setAttribute("user", student);
+            return "index";//进入到主页
+        }catch(Exception e){
+            e.printStackTrace();
+            session.setAttribute("user", student);
+            return "error";//返回到登录页面
+        }
+    }
 
 }
