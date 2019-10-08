@@ -5,6 +5,8 @@ import com.github.pagehelper.PageInfo;
 import com.zhuodewen.domain.Student;
 import com.zhuodewen.facade.StudentFacade;
 import com.zhuodewen.mapper.StudentMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,8 @@ import java.util.List;
 @Service
 @Transactional
 public class StudentService implements StudentFacade{
+
+    Logger logger = LoggerFactory.getLogger(StudentService.class);	//日志对象
 
     @Autowired
     private StudentMapper studentMapper;
@@ -44,6 +48,7 @@ public class StudentService implements StudentFacade{
      * @return
      */
     public PageInfo<Student> query(Student student) {
+        logger.info("logback测试--分页查询");
         PageHelper.startPage(1,10);
         return new PageInfo<Student>(studentMapper.selectAll());
     }
