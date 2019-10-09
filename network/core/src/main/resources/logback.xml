@@ -21,7 +21,8 @@
 		<!--<Encoding>UTF-8</Encoding>-->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!--文件位置及名称-->
-			<FileNamePattern>D:/MyProject_tests/logs/debug-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<FileNamePattern>D:/MyProject_tests/logs/network/debug-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<!--<FileNamePattern>logs/debug-%d{yyyy-MM-dd}-%i.log</FileNamePattern>-->
 			<!--最大存留天数-->
 			<maxHistory>7</maxHistory>
 			<!-- 按时间回滚的同时，按文件大小来回滚 -->
@@ -37,7 +38,8 @@
 			<!--日志字符编码格式-->
 			<charset>UTF-8</charset>
 		</encoder>
-		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印debbug日志 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<!-- 只打印debbug日志 -->
 			<level>DEBUG</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
@@ -50,7 +52,8 @@
 		<!--<Encoding>UTF-8</Encoding>-->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!--日志文件输出的文件名 -->
-			<FileNamePattern>D:/MyProject_tests/logs/error-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<FileNamePattern>D:/MyProject_tests/logs/network/error-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<!--<FileNamePattern>logs/debug-%d{yyyy-MM-dd}-%i.log</FileNamePattern>-->
 			<maxHistory>7</maxHistory>
 			<!-- 按时间回滚的同时，按文件大小来回滚 -->
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -62,7 +65,8 @@
 			<!--日志字符编码格式-->
 			<charset>UTF-8</charset>
 		</encoder>
-		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印错误日志 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<!-- 只打印错误日志 -->
 			<level>ERROR</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
@@ -74,7 +78,8 @@
 		<!-- 日志输出编码Encoding报错,注释掉-->
 		<!--<Encoding>UTF-8</Encoding>-->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>D:/MyProject_tests/logs/info-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<FileNamePattern>D:/MyProject_tests/logs/network/info-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<!--<FileNamePattern>logs/debug-%d{yyyy-MM-dd}-%i.log</FileNamePattern>-->
 			<maxHistory>7</maxHistory>
 			<!-- 按时间回滚的同时，按文件大小来回滚 -->
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -88,7 +93,8 @@
 			<!--日志字符编码格式-->
 			<charset>UTF-8</charset>
 		</encoder>
-		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印信息日志 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<!-- 只打印信息日志 -->
 			<level>INFO</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
@@ -100,7 +106,8 @@
 		<!-- 日志输出编码Encoding报错,注释掉-->
 		<!--<Encoding>UTF-8</Encoding>-->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>D:/MyProject_tests/logs/warn-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<FileNamePattern>D:/MyProject_tests/logs/network/warn-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<!--<FileNamePattern>logs/debug-%d{yyyy-MM-dd}-%i.log</FileNamePattern>-->
 			<maxHistory>7</maxHistory>
 			<!-- 按时间回滚的同时，按文件大小来回滚 -->
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -114,7 +121,8 @@
 			<!--日志字符编码格式-->
 			<charset>UTF-8</charset>
 		</encoder>
-		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印警告日志 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<!-- 只打印警告日志 -->
 			<level>WARN</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
